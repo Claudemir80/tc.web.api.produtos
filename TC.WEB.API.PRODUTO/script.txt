@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET utf8mb4;
+
+START TRANSACTION;
+
+ALTER DATABASE CHARACTER SET utf8mb4;
+
+CREATE TABLE `Categorias` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Nome` longtext CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK_Categorias` PRIMARY KEY (`Id`)
+) CHARACTER SET utf8mb4;
+
+CREATE TABLE `Produtos` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Descricao` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `Preco` decimal(18,2) NOT NULL,
+    `Estoque` longtext CHARACTER SET utf8mb4 NULL,
+    `DataCadastro` longtext CHARACTER SET utf8mb4 NULL,
+    `CategoriaId` int NOT NULL,
+    CONSTRAINT `PK_Produtos` PRIMARY KEY (`Id`)
+) CHARACTER SET utf8mb4;
+
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20220527011839_adicinal', '5.0.17');
+
+COMMIT;
+
